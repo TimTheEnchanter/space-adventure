@@ -43,6 +43,7 @@ let mySprite: Sprite = null
 scene.setBackgroundImage(assets.image`Galaxy`)
 scroller.scrollBackgroundWithSpeed(0, 10)
 mySprite = sprites.create(assets.image`Rocket`, SpriteKind.Player)
+mySprite.y = 105
 controller.moveSprite(mySprite)
 mySprite.setStayInScreen(true)
 animation.runImageAnimation(
