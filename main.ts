@@ -40,6 +40,7 @@ let darts: Image[] = []
 let enemySpeed = 0
 let statusbar: StatusBarSprite = null
 let mySprite: Sprite = null
+game.splash("Space Adventure", "By James Parrott")
 scene.setBackgroundImage(assets.image`Galaxy`)
 scroller.scrollBackgroundWithSpeed(0, 10)
 mySprite = sprites.create(assets.image`Rocket`, SpriteKind.Player)
