@@ -10,6 +10,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         `]
     projectile = sprites.createProjectileFromSprite(darts._pickRandom(), mySprite, 0, -150)
     projectile.startEffect(effects.fire, 500)
+    music.play(music.melodyPlayable(music.pewPew), music.PlaybackMode.UntilDone)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Gas, function (sprite, otherSprite) {
     statusbar.value = 100
@@ -26,11 +27,16 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
         info.changeScoreBy(5)
         mySprite.sayText("+5 Level-Up Bonus!", 2000, false)
         enemySpeed = 70
+    } else if (info.score() == 25) {
+        info.changeScoreBy(10)
+        mySprite.sayText("+10 Level-Up Bonus!", 2000, false)
+        enemySpeed = 90
     }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
     otherSprite.destroy(effects.fire, 500)
+    music.play(music.melodyPlayable(music.smallCrash), music.PlaybackMode.UntilDone)
     scene.cameraShake(4, 500)
 })
 let myEnemy: Sprite = null
@@ -72,6 +78,6 @@ game.onUpdateInterval(2000, function () {
     true
     )
 })
-game.onUpdateInterval(300, function () {
+game.onUpdateInterval(400, function () {
     statusbar.value += -1
 })
